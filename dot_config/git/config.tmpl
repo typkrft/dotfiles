@@ -1,0 +1,5 @@
+[user]
+	email = {{ .chezmoi.config.data.gitEmail }}
+	name = {{ .chezmoi.username }}
+[core]
+	excludesfile = {{ .chezmoi.homeDir }}/config/.gitignore_global

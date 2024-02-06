@@ -1,0 +1,95 @@
+#!/usr/bin/env zsh
+
+{{ if eq .chezmoi.os "darwin" -}}
+echo "[INFO] Installing MacOS defaults"
+sh "$HOME/.config/macos/preferences"
+{{- end }}
+
+echo "[INFO] Install Brew Packages"
+brew bundle install --file="$HOME/.config/brew/brewfile"
+
+# Install asdf python
+# NOTE: May need to install prerequisites depending on the os
+echo "[INFO] Install python via asdf"
+. "$(brew --prefix asdf)/libexec/asdf.sh"
+asdf plugin add python
+asdf install python latest
+asdf global python latest
+
+echo "[INFO] Building FZF Tab Module"
+. $HOME/.config/zsh/plugins/post_compinit/fzf-tab/fzf-tab.plugin.zsh
+build-fzf-tab-module
+
+{{ if eq .chezmoi.os "darwin" }}
+echo "[INFO] Installing Firefox Policies"
+if [[ -d '/Applications/Firefox Developer Edition.app/' ]]; then
+    
+    if [[ ! -d '/Applications/Firefox Developer Edition.app/Contents/Resources/distribution/' ]]; then 
+        mkdir '/Applications/Firefox Developer Edition.app/Contents/Resources/distribution/'
+    fi
+
+    if [[ -L '/Applications/Firefox Developer Edition.app/Contents/Resources/distribution/policies.json' ]]; then 
+        echo "[INFO] Firefox Policies already Exist"
+    fi
+    
+    ln -s '{{ .chezmoi.homeDir }}/.config/firefox/policies.json' '/Applications/Firefox Developer Edition.app/Contents/Resources/distribution/policies.json'
+fi
+
+echo "[INFO] Installing Alfred Workflows"
+workflow_urls=(
+"https://github.com/stephancasas/alfred-mouseless-messenger/releases/download/v2.0.3/Mouseless.Messenger.alfredworkflow"
+"https://github.com/packal/repository/raw/master/com.yannickglt.alfred2.devdocs/devdocs.alfredworkflow"
+"https://github.com/Acidham/alfred-vscode-workspace-explorer/releases/download/v1.0.0/VSCode.Workspace.Explorer.alfredworkflow"
+"https://github.com/blacs30/bitwarden-alfred-workflow/releases/download/3.0.4/bitwarden-alfred-workflow.alfredworkflow"
+"https://github.com/alfredapp/shortcuts-workflow/releases/download/2023.8/Shortcuts.alfredworkflow"
+"https://github.com/vitorgalvao/coffee-coffee-workflow/releases/download/2023.4/Coffee.Coffee.alfredworkflow"
+"https://github.com/alanhg/alfred-workflows/raw/master/2fa-read-code/2FA-Read%20Code.alfredworkflow"
+"https://github.com/alfredapp/paste-as-plain-text-from-hotkey-workflow/releases/download/2022.2/Paste.as.Plain.Text.from.Hotkey.alfredworkflow"
+"https://github.com/vitorgalvao/start-recording-workflow/releases/download/2023.4/Start.Recording.alfredworkflow"
+"https://github.com/TobiasMende/alfred-audio-switcher/releases/download/v1.1.1/alfred-audio-switcher.alfredworkflow"
+"https://github.com/alanhg/alfred-workflows/raw/master/qr-reader/QR%20Reader.alfredworkflow"
+"https://github.com/deanishe/alfred-firefox/releases/download/v0.2.2/Firefox-Assistant-0.2.2.alfredworkflow"
+)
+
+if [[ ! -d "$HOME/Library/Application Support/Alfred/Alfred.alfredpreferences/workflows" ]]; then
+    mkdir -p "$HOME/Library/Application Support/Alfred/Alfred.alfredpreferences/workflows"
+fi
+
+for url in ${workflow_urls[@]}; do
+    curl -vO -L --output-dir "$HOME/Library/Application Support/Alfred/Alfred.alfredpreferences/workflows" "$url" 
+done
+
+cd "$HOME/Library/Application Support/Alfred/Alfred.alfredpreferences/workflows"
+for workflow in *; do
+    unzip "$workflow" -d "${workflow%%.*}" && rm "$workflow"
+done
+
+
+echo "[INFO] Setting up Yabai..."
+if csrutil status | grep -q 'disabled'; then
+    echo "[INFO] SIP disabled. Installing yabai scripting additions."
+    sudo yabai --install-sa
+else
+    echo "[INFO] SIP enabled. Consider disabling SIP for yabai."
+fi
+
+if [[ ! -f "$HOME/Library/LaunchAgents/com.koekeishiya.yabai.plist" ]]; then
+    yabai --install-service
+fi
+
+yabai --start-service
+
+{{ end }}
+
+{{ if eq .chezmoi.config.data.setupBitwarden "true" }}
+read "bw_server?What is the URL of the Bitwarden Server? "
+read "bw_client_id?What is the Bitwarden Client ID? " 
+read "bw_secret_key?What is the Bitwarden Secret Key? " 
+bw config server "$bw_server"
+BW_CLIENTID="$bw_client_id" BW_CLIENTSECRET="$bw_secret_key" bw login --apikey
+bw unlock
+export BW_SESSION=$(bw unlock --raw)
+bw sync
+{{ end }}
+
+

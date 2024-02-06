@@ -1,0 +1,16 @@
+% Digital Certificates
+# List Ceritifcates
+pk12util -d sql:$HOME/.pki/nssdb -L
+
+# Rename Digital Certificate 
+certutil -d sql:$HOME/.pki/nssdb --rename -n <current_name> --new-n <new_name>
+
+# Import Personal Certificate
+pk12util -d sql:$HOME/.pki/nssdb -i <path_to_cert>
+
+# Create a New Database
+certutil -N -d sql:$HOME/.pki/nssdb -L --empty-password
+
+% Navi
+# Browse Navi Cheat Repos
+navi repo browse

@@ -1,0 +1,99 @@
+[dracula.hex]
+background = "282A36"
+current_line = "44475A"
+foreground = "F8F8F2"
+comment = "6272A4"
+cyan = "8BE9FD"
+green = "50FA7B"
+orange = "FFB86C"
+pink = "FF79C6"
+purple = "BD93F9"
+red = "FF5555"
+yellow = "F1FA8C"
+
+[dracula.yabai]
+insertColor = "50FA7B"
+borderColorActive = "BD93F9"
+borderColorInactive = "6272A4"
+
+[dracula.alfred.result]
+backgroundSelected = "44475A"
+[dracula.alfred.result.shortcut]
+color = "FFB86C"
+colorSelected = "FFB86C"
+[dracula.alfred.result.subtext]
+color = "6272A4"
+colorSelected = "BD93F9"
+[dracula.alfred.result.text]
+color = "F8F8F2"
+colorSelected = "50FA7B"
+[dracula.alfred.scrollbar]
+color = "BD93F9"
+[dracula.alfred.search]
+background = "282A36"
+backgroundSelected = "BD93F9"
+[dracula.alfred.search.text]
+color = "F8F8F2"
+colorSelected = "F8F8F2"
+[dracula.alfred.seperator]
+color = "F8F8F2"
+[dracula.alfred.window]
+color = "282A36"
+borderColor = "282A36"
+
+[dracula.kitty]
+foreground = "F8F8F2"
+background = "282A36"
+selectionForeground = "ffffff"
+selectionBackground = "44475a"
+urlColor = "8BE9FD"
+color0 = "21222C"
+color1 = "FF5555"
+color2 = "50FA7B"
+color3 = "F1FA8C"
+color4 = "BD93F9"
+color5 = "FF79C6"
+color6 = "8BE9FD"
+color7 = "F8F8F2"
+color8 = "6272A4"
+color9 = "FF6E6E"
+color10 = "69FF94"
+color11 = "FFFFA5"
+color12 = "D6ACFF"
+color13 = "FF92DF"
+color14 = "A4FFFF"
+color15 = "FFFFFF"
+cursor = "F8F8F2"
+cursorTextColor = "282A36"
+activeTabForeground = "282A36"
+activeTabBackground = "F8F8F2"
+inactiveTabForeground = "282A36"
+inactiveTabBackground = "6272A4"
+mark1Foreground = "282A36"
+mark1Background = "FF5555"
+activeBorderColor = "F8F8F2"
+inactiveBorderColor = "6272A4"
+
+[dracula.bat]
+theme = "Dracula"
+
+[dracula.fzf]
+defaultOpts = "--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4"
+
+[dracula.vscode]
+theme = "Dracula"
+
+[dracula.firefox]
+theme = "dracula"
+turquoise = "69FF94"
+background = "282A36"
+current_line = "44475A"
+foreground = "F8F8F2"
+comment = "6272A4"
+cyan = "8BE9FD"
+green = "50FA7B"
+orange = "FFB86C"
+pink = "FF79C6"
+purple = "BD93F9"
+red = "FF5555"
+yellow = "F1FA8C"

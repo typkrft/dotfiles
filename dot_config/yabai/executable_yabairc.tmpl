@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+if csrutil status | grep -q 'disabled'; then
+    sudo yabai --load-sa
+    
+    sip_opts=(
+        window_shadow float
+        window_opacity on
+        active_window_opacity 1.0
+        normal_window_opacity 0.95
+    )
+  
+    yabai -m config "${sip_opts[@]}"
+fi
+
+global_opts=(
+    layout bsp
+    insert_feedback_color "0xff{{ .dracula.yabai.insertColor }}"
+    left_padding 8
+    right_padding 8
+    top_padding 8
+    bottom_padding 8
+    focus_follows_mouse autoraise
+    window_origin_display focused
+    window_placement second_child
+    window_zoom_persist on
+    split_type horizontal
+    mouse_modifier ctrl
+    mouse_action1 move
+    mouse_action2 resize
+    window_gap 14
+)
+
+yabai -m config "${global_opts[@]}"
+
+# colors can be gradient(top_left=0xff50FA7B,bottom_right=0xffBD93F9)
+border_opts=(
+    active_color="0xff{{ .dracula.yabai.borderColorActive }}"
+    inactive_color="0xff{{ .dracula.yabai.borderColorInactive }}"
+    width=8.0
+    hidpi=off
+)
+
+killall borders &> /dev/null
+borders "${border_opts[@]}" &
+

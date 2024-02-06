@@ -1,0 +1,44 @@
+[".config/zsh/plugins/post_compinit/fzf-tab"]
+    type = "git-repo"
+    url = "https://github.com/Aloxaf/fzf-tab.git"
+    stripComponents = 1
+    refreshPeriod = "168h"
+
+[".config/zsh/plugins/post_compinit/chezmoi/chezmoi.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/twpayne/chezmoi/master/completions/chezmoi.zsh"
+    refreshPeriod = "168h"
+
+[".config/zsh/plugins/post_compinit/zsh-auto-notify/auto-notify.plugin.zsh"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/MichaelAquilina/zsh-auto-notify/master/auto-notify.plugin.zsh"
+    refreshPeriod = "168h"
+
+[".config/zsh/plugins/pre_compinit/eza/_eza"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/eza-community/eza/main/completions/zsh/_eza"
+    refreshPeriod = "168h"
+
+[".config/zsh/plugins/post_compinit/zsh-autosuggestions"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-autosuggestions.git"
+    refreshPeriod = "168h"
+    stripComponents = 1
+
+[".config/zsh/plugins/post_compinit/zsh-autopair"]
+    type = "git-repo"
+    url = "https://github.com/hlissner/zsh-autopair.git"
+    refreshPeriod = "168h"
+    stripComponents = 1
+
+[".config/zsh/plugins/post_compinit/zsh-ssh"]
+    type = "git-repo"
+    url = "https://github.com/sunlei/zsh-ssh.git"
+    refreshPeriod = "168h"
+    stripComponents = 1
+
+[".config/zsh/plugins/post_compinit/fast-syntax-highlighting"]
+    type = "git-repo"
+    url = "https://github.com/zdharma-continuum/fast-syntax-highlighting.git"
+    refreshPeriod = "168h"
+    stripComponents = 1

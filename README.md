@@ -1,0 +1,1 @@
+sudo sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin && chezmoi init gitrepo apply

@@ -1,0 +1,49 @@
+#!/usr/bin/env zsh
+
+. $(brew --prefix asdf)/libexec/asdf.sh
+
+# Pre Compinit Plugins
+# Add fpaths before compinit
+# NOTE: If you get insecure directories warnings chmod -R go-w "$(brew --prefix)/share"
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+FPATH="$HOME/.config/zsh/plugins/pre_compinit/eza/_eza:${FPATH}"
+
+autoload -Uz compinit
+compinit
+
+# Post Compinit Plugins
+. "$HOME/.config/zsh/plugins/post_compinit/chezmoi/chezmoi.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/navi/navi.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/zsh-auto-notify/auto-notify.plugin.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/zsh-ssh/zsh-ssh.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/ls_report/ls_report.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/command-not-found/command-not-found.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/zsh-autopair/zsh-autopair.plugin.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh"
+. "$HOME/.config/zsh/plugins/post_compinit/fzf-tab/fzf-tab.plugin.zsh" # Needs to be the last plugin to bind "^|"
+
+# Load Configs
+for file in "$HOME"/.config/zsh/configs/*(.)zsh; do 
+    . "$file"
+done
+
+# Run _ls_report On Changing Directory
+chpwd() { _ls_report }
+
+# Aliases
+alias sed="gsed"
+alias ssh="TERM='xterm-256color' ssh"
+alias ls="eza --icons=always --group-directories-first --color=always"
+alias man="batman"
+alias sudo="sudo -E"
+{{ if (or (eq .chezmoi.os "darwin") (eq .chezmoi.config.data.gui "true")) -}}
+alias dots="cd $HOME/.local/share/chezmoi && code ."
+{{ else }}
+alias dots="cd $HOME/.local/share/chezmoi && nvim ."
+{{- end }}
+
+# End of File
+eval "$(zoxide init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
+eval "$(starship init zsh)"

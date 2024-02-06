@@ -1,0 +1,29 @@
+{
+    "policies": {
+      "Extensions": {
+        "Install": [
+          "https://addons.mozilla.org/firefox/downloads/file/3713996/alfred_launcher_integration-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4066782/foxytab-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/3925614/omnisearch-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4215711/linkwarden-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4058426/multi_account_containers-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4158232/decentraleyes-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4181516/sponsorblock-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4171020/ublock_origin-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/3829515/tabcenter_reborn-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/3782413/new_tab_override-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/1088916/side_view-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4175360/container_tabs_sidebar-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4141330/theater_mode_for_youtube-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/3694180/wikiwand_wikipedia_modernized-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4091018/dracula_dark_colorscheme-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/4219948/bitwarden_password_manager-latest.xpi",
+          "https://addons.mozilla.org/firefox/downloads/file/3713996/alfred_launcher_integration-latest.xpi"
+        ]
+      },
+      "ExtensionUpdate": true,
+      "DisableTelemetry": true
+    }
+  }
+  
+  

@@ -1,0 +1,39 @@
+- [ ] HID UTIL in zshrc
+- [ ] Setup skhd
+- [ ] Setup sketchybar
+- [ ] git config
+- [ ] download important repos
+- [ ] install firefox extensions / profile userchrome etc
+- [ ] pip packages
+  - [ ] asyncio
+  - [ ] playwright && playwright
+  - [ ] sqlmodel
+  - [ ] requests
+  - [ ] pandas
+  - [ ] pygsheets
+  - [ ] polars
+- [ ] setup bash completions
+- [ ] sudo sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin && chezmoi init gitrepo apply
+- [ ] set wallpaper
+- [ ] ssh keys
+- [ ] ansible
+- [ ] Firefox
+  - [ ] userchrome
+  - [ ] user.js
+- [ ] vscode settings
+- [ ] Defualts
+  - [ ] make recent downloads folder show as list or grid
+  - [ ] mnimize to application
+  - [ ] turn off macos native Window manager
+  - [ ] Set Firefox as default
+- [ ] yabai, skhdrc --install-service and --start-service run once after
+- [ ] Don't move mac specifc files from source if not on macos like ~/Library
+- [ ] https://github.com/ranmaru22/firefox-vertical-tabs/tree/main
+- [ ] ff user pref to restore last session
+- [ ] add additional items to do in readme like adding css to tab bar center reborn, which has to be done manually
+- [ ] make a dynamically colored ff userchrome css that uses chezmoi data variables for theming
+- [ ] setup vscode
+- [ ] setup ssh
+- [ ] Install Digital Certificates
+- [ ] fix vscode terminal keybindings if needed as they may differ from kitty. $TERM_PROGRAM="vscode" 
+- [ ] template things that are macos only

@@ -1,0 +1,9 @@
+{{ $gitEmail := promptString "What is your git email?" }}
+{{ $gui := promptString "Is this a linux host with a GUI? " }}
+{{ $setupBitwarden := promptString "Would you like to setup Bitwarden? " }}
+
+
+[data]
+    gitEmail = {{ $gitEmail | quote }}
+    gui = {{ $gui | quote }}
+    setupBitwarden = {{ $setupBitwarden | quote }}

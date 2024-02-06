@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+{{ if eq .chezmoi.os  "darwin" -}}
+echo "[INFO] Running MacOS specific scripts..."
+
+echo "[INFO] Installing Touch ID 'sudo' access..."
+if [[ $(grep -c ^ /etc/pam.d/sudo) -lt 2 ]]; then
+    echo "
+    " | sudo tee -a /etc/pam.d/sudo
+fi
+
+if ! /usr/bin/grep 'pam_tid.so' /etc/pam.d/sudo > /dev/null; then
+  sudo /usr/bin/sed -i "" '2i\
+auth       sufficient     pam_tid.so    
+  ' /etc/pam.d/sudo
+fi
+{{ end }}

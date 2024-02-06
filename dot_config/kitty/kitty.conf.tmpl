@@ -1,0 +1,50 @@
+# Fonts
+font_family Iosevka Nerd Font 
+font_size 16
+symbol_map U+23FB-U+23FE,U+2665,U+26A1,U+2B58,U+E000-U+E00A,U+E0A0-U+E0A3,U+E0B0-U+E0C8,U+E0CA,U+E0CC-U+E0D2,U+E0D4,U+E200-U+E2A9,U+E300-U+E3E3,U+E5FA-U+E62F,U+E700-U+E7C5,U+F000-U+F2E0,U+F300-U+F31C,U+F400-U+F4A9,U+F500-U+F8FF Symbols Nerd Font
+
+# Tabs
+bell_on_tab 
+tab_bar_edge bottom
+tab_bar_style powerline 
+tab_powerline_style slanted
+tab_activity_symbol " "
+
+# Window
+hide_window_decorations titlebar-only
+window_padding_width 0 8 0 8
+focus_follows_mouse yes
+background_opacity 0.9
+background_blur 64
+
+# Scrollback
+scrollback_lines 150000
+scrollback_fill_enlarged_window yes
+
+# Cursor
+curson_shape beam
+
+# Mouse
+mouse_hide_wait -1
+
+# Copy
+strip_trailing_spaces always
+
+# Terminal 
+enable_audio_bell yes
+confirm_os_window_close 0
+shell_integration enabled
+allow_remote_control yes
+
+# Theme
+include theme.conf
+
+{{ if eq .chezmoi.os "darwin" -}}
+# MacOS
+macos_colorspace displayp3
+macos_option_as_alt yes
+macos_quit_when_last_window_closed yes
+macos_custom_beam_cursor yes
+
+map cmd+backspace send_key ctrl+u
+{{ end -}}
