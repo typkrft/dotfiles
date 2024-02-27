@@ -29,12 +29,26 @@ restic -r <restic_repo> restore latest --target <restore_path>
 # Dump File Contents to stdout
 restic -r <restic_repo> dump latest <file_path> | <cmd>
 
+% Ripgrep
+# List Matches 
+rg -l '<search_str>' --sort path
+
 % Rclone
 # Clear FS Cache
 rclone rc fscache/clear --rc-user="<user>" --rc-pass="<pass>" --rc-addr="<rclone_server>" -vv
 
 # Remote Backup
 rclone rc sync/copy --progress srcFs="<src>" dstFs="<dst>" --transfers="10" --checkers="10" --rc-user="<user>" --rc-pass="<pass>" --rc-addr="<rclone_server>" -vv
+
+% Vault
+# Inject Env Variables into Command
+VAULT_ADDR=<vault_addr> VAULT_TOKEN=<vault_token> envconsul -upcase -prefix -secret <secret_engine_path>/<secret> <command>
+
+# Store a file 
+VAULT_ADDR=<vault_addr> VAULT_TOKEN=<vault_token> vault kv put <secret_engine_path>/<secret> <key>=@<file_path>
+
+# Retrieve a file
+VAULT_ADDR=<vault_addr> VAULT_TOKEN=<vault_token> vault kv get -mount=<secret_engine_path> -field=<key> <secret> > <local_file>
 
 % Misc
 # Caps Lock to RCtrl
