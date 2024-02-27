@@ -14,3 +14,31 @@ certutil -N -d sql:$HOME/.pki/nssdb -L --empty-password
 % Navi
 # Browse Navi Cheat Repos
 navi repo browse
+
+% Proxmox Backup Server
+# Delete Namespace
+proxmox-backup-client namespace delete --repository <datastore> <namespace>
+
+# Move backup to current NS
+VMID='<VMID>' BACKUP='<backup_file>' DATASTORE='<path_to_datastore>'; mkdir "$VMID" && cp -r "$DATASTORE"/" $VMID"/"$BACKUP" ./"$VMID" && cp "DATASTORE"/"$VMID"/owner ./"$VMID"/owner
+
+% Restic
+# Restore Latest Snapshot
+restic -r <restic_repo> restore latest --target <restore_path>
+
+# Dump File Contents to stdout
+restic -r <restic_repo> dump latest <file_path> | <cmd>
+
+% Rclone
+# Clear FS Cache
+rclone rc fscache/clear --rc-user="<user>" --rc-pass="<pass>" --rc-addr="<rclone_server>" -vv
+
+# Remote Backup
+rclone rc sync/copy --progress srcFs="<src>" dstFs="<dst>" --transfers="10" --checkers="10" --rc-user="<user>" --rc-pass="<pass>" --rc-addr="<rclone_server>" -vv
+
+% Misc
+# Caps Lock to RCtrl
+hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingDst":30064771300,"HIDKeyboardModifierMappingSrc":30064771129}]}' > /dev/null
+
+# Speed Test
+curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -

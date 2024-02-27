@@ -8,3 +8,5 @@ history_filter = [
    "^export VAULT_TOKEN"
 ]
 enter_accept = true
+
+sync_address = {{ or (.chezmoi.config.data.atuinServer | quote) ("https://api.atuin.sh") }}
